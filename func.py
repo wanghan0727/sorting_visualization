@@ -26,12 +26,25 @@ def bubble_sort(nums):
 			yield nums
 
 
+def insertion_sort(nums):
+	
+	n = len(nums)
+	for i in range(1, n):
+		j = i
+		while j > 0 and nums[j] < nums[j-1]:
+			swap(nums, j, j-1)
+			j -= 1
+			yield nums
+
+
+
+
 if __name__ == '__main__':
 
 	nums = [1, 2, 3, 4, 5]
 	random.shuffle(nums)
 	print("unsorted: ", nums)
 
-	generator = bubble_sort(nums)
+	generator = insertion_sort(nums)
 	print("sorted: ", next(generator))
 
