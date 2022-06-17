@@ -37,6 +37,23 @@ def insertion_sort(nums):
 			yield nums
 
 
+def selection_sort(nums):
+
+	if len(nums) == 1:
+		return
+
+	for i in range(len(nums)):
+		min_num = nums[i]
+		min_num_idx = i
+
+		for j in range(i, len(nums)):
+			if nums[j] < min_num:
+				min_num = nums[j]
+				min_num_idx = j
+			yield nums
+
+		swap(nums, i, min_num_idx)
+		yield nums
 
 
 if __name__ == '__main__':
@@ -45,6 +62,6 @@ if __name__ == '__main__':
 	random.shuffle(nums)
 	print("unsorted: ", nums)
 
-	generator = insertion_sort(nums)
+	generator = selection_sort(nums)
 	print("sorted: ", next(generator))
 
